@@ -1,5 +1,91 @@
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Audiowide&display=swap');
+</style>
 *{
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+}
+body{
+    background-color: #D1D6DA; 
+}
+nav{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    list-style: none;
+    border-bottom: 1px solid black;
+    box-shadow: 0 0 10px 0 black;
+}
+.accroche{
+    display: flex;
+    background: linear-gradient(155deg, rgba(255,255,255,1) 0%, rgba(17,65,125,1) 10%, rgba(152,153,153,1) 96%, rgba(0,0,0,1) 100%);
+    box-shadow: 10px black;
+}
+.accroche h1{
+    font-family: 'Audiowide', cursive;
+    font-size: 56px;
+    text-align: center;
+    color: white;
+}
+h1 span{
+    color: #FD8A69;
+}
+.accroche p{
+    font-family: Roboto, sans-serif;
+    color: white;
+    font-size: 36px;
+    text-align: center;
+    padding: 20px;
+}
+.image img{
+    /* width: 600px;
+    height: 300px; */
+    padding: 50px;
+    box-shadow: 5px black;
+}
+.formations button{
+    font-size: 40px;
+    box-shadow: 0 10px 10px 0 grey;
+    border-radius: 20px;
+    width: 300px;
+    height: 300px;
+    align-items: center;
+    color: white;
+}
+.btntop{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-top: 150px;
+    margin-bottom: 150px;
+}
+.formations h2{
+    font-family: 'Audiowide', cursive;
+    background-color: #b3b8b8;
+    text-align: center;
+    border: 1px solid black;
+    border-radius: 20px;
+    width: 900px;
+    color: #434646;
+    padding: 50px 0;
+    margin: auto;
+}
+.btnbot{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-top: 150px;
+}
+.orange{
+    background-color: #FD8A69;
+}
+.bleu{
+    background-color: #11417D;
+}
+.vert{
+   background-color: #47A18B; 
+}
+.gris{
+    background-color: #989999;
 }
