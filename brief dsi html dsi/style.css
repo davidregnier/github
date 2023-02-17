@@ -6,16 +6,30 @@
 body{
     background-color: #D1D6DA; 
 }
+a{
+    text-decoration: none;
+    color: black;
+}
 nav{
     display: flex;
     align-items: center;
     justify-content: space-around;
     list-style: none;
+    color: white;
+    height: 150px;
     border-bottom: 1px solid black;
-    box-shadow: 0 0 10px 0 black;
+    box-shadow: 10px 10px 10px 0px black;
+    font-size: 20px;
+}
+nav img{
+    height: 140px;
+    width: 140px;
 }
 .accroche{
+    padding: 100px;
     display: flex;
+    place-items: center;
+    
     background: linear-gradient(155deg, rgba(255,255,255,1) 0%, rgba(17,65,125,1) 10%, rgba(152,153,153,1) 96%, rgba(0,0,0,1) 100%);
 }
 .accroche h1{
@@ -35,12 +49,12 @@ h1 span{
     padding: 20px;
 }
 .image img{
-    /* width: 600px;
-    height: 300px; */
-    padding: 50px;
+    width: 600px;
+    height: 300px;
+    /* padding: 50px; */
 }
 .formations button{
-    font-size: 40px;
+    font-size: 35px;
     box-shadow: 0 10px 10px 0 grey;
     border-radius: 20px;
     width: 300px;
@@ -51,6 +65,7 @@ h1 span{
 .btntop{
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
     justify-content: space-around;
     margin-top: 150px;
     margin-bottom: 150px;
@@ -65,10 +80,12 @@ h1 span{
     color: #434646;
     padding: 50px 0;
     margin: auto;
+    flex-wrap: wrap;
 }
 .btnbot{
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
     justify-content: space-around;
     margin-top: 150px;
 }
@@ -84,9 +101,15 @@ h1 span{
 .gris{
     background-color: #989999;
 }
-.diagrame {
-    margin: auto;
-    padding: auto;
+.diagrame div{
+    margin: 100px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.diagrame img{
+    border-radius: 50px;
+    box-shadow: 5px 5px 5px 0px #111010 ;
 }
 footer{
     display:flex;
@@ -94,8 +117,27 @@ footer{
     padding: 50px 200px;
     background: linear-gradient(300deg, rgba(255,255,255,1) 0%, rgba(17,65,125,1) 10%, rgba(152,153,153,1) 96%, rgba(0,0,0,1) 100%);
 }
-hr{
-    rotate: 90deg;
-    color: white;
-    width: 200px;
+.formulaire{
+    border: 2px solid #23589a;
+    border-radius: 10px;
+    padding: 20px;
+    background-color: #23589a;
+    box-shadow: 5px 5px 0px 0px #FD8A69 ;
+    line-height: 20px;
+}
+.formulaire p{
+    color: rgb(246, 243, 243);
+}
+.formulaire button{
+    display: block;
+    text-align: center;
+    place-items: center;
+    width: 100%;
+    margin-top: 10px;
+    background-color: #FD8A69;
+    border: 1px solid rgb(255, 255, 255);
+    color: rgb(255, 255, 255);
+}
+.formulaire button a{
+    color: #D1D6DA;
 }
