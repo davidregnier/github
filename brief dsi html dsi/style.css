@@ -292,6 +292,11 @@ footer {
         justify-content: center;
         align-items: center;
     }
+    .image img{
+        margin: auto;
+        width: 500px;
+        height: 250px;
+    }
     .accroche p{
         margin: auto;
     }
