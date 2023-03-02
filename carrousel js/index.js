@@ -76,28 +76,65 @@ function Mario (titre, console, sortie){
 
     console.log(marioCollections)
 
-    //grace a la methode map , pour chaque objet de l'objet ma collections nous allons creer une div qui aura comme h2 le nom de la console en h3 le nom du jeu et en h4 l'année , cette div doit etre afficher sur l'html
+//grace a la methode map , pour chaque objet de l'objet ma collections nous allons creer une div qui aura comme h2 le nom de la console
+//en h3 le nom du jeu et en h4 l'année , cette div doit etre afficher sur l'html
 
 
     const marioDivs = Object.values(marioCollections).map((mario) => {
     const div = document.createElement("div");
+    const marioCollectionDiv = document.getElementById("marioCollectionDiv");
+
+//la methode Object.values() sert a extraire les valeur de chaque proprieté d'objet de l'objet marioCollections
+//puis la methode map() pour boucler a travers chaque elements de ce tableau
+    
   
     const h2 = document.createElement("h2");
-    h2.textContent = mario.console;
+    h2.textContent = mario.titre;
     div.appendChild(h2);
   
     const h3 = document.createElement("h3");
-    h3.textContent = mario.titre;
+    h3.textContent = mario.console;
     div.appendChild(h3);
   
     const h4 = document.createElement("h4");
     h4.textContent = mario.sortie;
     div.appendChild(h4);
   
+// la fonction map() va creer  un nouvel element <div> pour chaque element du tableau en utilisant la methodes  document.createElement()
+//et leur atribut le contenue des propriété console sortie titre de l'objet mario en utilisant la proprieté textContent
+
     return div;
   });
   
-  marioDivs.forEach((div) => {
+  marioDivs.forEach((div) => {//la methode forEach() ajoute chaque nouvel element <div> crée a l'element <div> avec l'ID marioCollectionDiv dans l'html grace a la methode appenChild()
     marioCollectionDiv.appendChild(div);
   });
+
+  marioDivs.forEach((div) => {
+    div.addEventListener("mouseover", () => {//au survol
+      div.style.transform = "scale(1.1)";//grossi la div
+      div.style.transition = "all 0.3s ease";// transition de 0.3 sec pour atteindre ca taille
+      div.style.color = "rgba(155, 155, 155)";//couleur
+    });
   
+    div.addEventListener("mouseout", () => {// a la sorti de la souris
+      div.style.transform = "scale(1)";
+      div.style.transition = "all 0.3s ease";
+      div.style.color = "rgba(255, 255, 255)"
+    });
+  });
+  
+  // Ajout d'un effet de clic pour chaque jeu de la collection
+  marioDivs.forEach((div) => {
+    div.addEventListener("click", () => {
+      div.style.backgroundColor = "rgba(155, 0, 155, 0.5)";
+      div.style.borderRadius = "10px";
+      div.style.transition = "all 0.3s ease";
+  
+      setTimeout(() => {// le setTimeout est utilsé pour retarder l'alerte en l'occurence de 1000 millisecondes soit 1sec
+        alert(`Vous avez choisi ${div.querySelector("h2").textContent} sorti en ${div.querySelector("h4").textContent} sur ${div.querySelector("h3").textContent}`);//crée une alert et recupere tous les element div grace a la methode querySelector 
+      }, 1000);
+    });
+  });
+  
+    
