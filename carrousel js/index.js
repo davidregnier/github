@@ -24,13 +24,13 @@
 //         container.style.transition="all 0.5s ease";
 //     }
 // }
-function fibonacci(nbr) {
-    if (nbr === 0) {
+function fibonacci(n) {
+    if (n === 0) {
       return [0];
-    } else if (nbr === 1) {
+    } else if (n === 1) {
       return [0, 1];
     } else {
-      let fib = fibonacci(nbr - 1);
+      let fib = fibonacci(n - 1);
       fib.push(fib[fib.length - 1] + fib[fib.length - 2]);
       return fib;
     }
@@ -38,3 +38,18 @@ function fibonacci(nbr) {
   
   console.log(fibonacci(50));
   
+  function fibonacci(n) {
+    let count = [];
+    for(let i = 0; i <= n; i++) {
+        if(i == 0) {
+            count = [i];
+        } else if (i == 1) {
+            count.push(count[i-1] + i);
+        } else {
+            count.push(count[i-2] + count[i-1]);
+        }
+    }
+    return count;
+  }
+
+  console.log(fibonacci(50));
