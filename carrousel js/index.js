@@ -56,85 +56,105 @@
 
 // titre console anne de sortie
 
-function Mario (titre, console, sortie){
+function Mario (titre, console, sortie, description){
     this.titre = titre;
     this.console = console;
     this.sortie = sortie;
+    this.description = description;
 }
-    let mario1 = new Mario("mario Bros", "game And Watch", 1983 );
-    let mario2 = new Mario("super mario bros", "Nes", 1985);
-    let mario3 = new Mario("super mario bros special", "pc-88", 1986);
-    let mario4 = new Mario("super mario bros 2 th lost level", "famicom", 1986);
-    let mario5 = new Mario("super mario bros 2", "gba famicom", 2001);
-    let mario6 = new Mario("super mario bros 3", "gba", 2003);
-    let mario7 = new Mario("kaettekita mario bros", "famicom", 1988);
-    let mario8 = new Mario("super mario bros and friends", "ms-dos", 1992);
-    let mario9 = new Mario("new super mario bros wii coin word", "arcade", 2011 );
-    let mario10 = new Mario("new super mario bros2", "3ds", 2012);
+    let mario1 = new Mario("mario Bros", "game And Watch", 1983, "est un jeu d'arcade développé et édité par Nintendo en 1983. Il a été conçu par Shigeru Miyamoto comme la suite de Donkey Kong, avec lequel il constitue un des premiers jeux de plates-formes jamais créés." );
+    let mario2 = new Mario("super mario bros", "Nes", 1985, "Super Mario Bros. est un jeu vidéo de plates-formes à défilement horizontal développé par Nintendo R&D4 et édité par Nintendo. Il est sorti sur Famicom au Japon en 1985 puis sur Nintendo Entertainment System en Amérique du Nord la même année et en 1987 en Europe. Il s'agit du premier jeu de la série Super Mario.");
+    let mario3 = new Mario("super mario bros special", "pc-88", 1986, "est un jeu vidéo de plates-formes à défilement horizontal développé par Nintendo R&D4 et édité par Nintendo.");
+    let mario4 = new Mario("super mario bros 2 th lost level", "famicom", 1986, "Super Mario Bros.: The Lost Levels, nommé Super Mario Bros, au Japon, est un jeu vidéo de plates-formes édité par Nintendo et développé par Nintendo R&D4 f");
+    let mario5 = new Mario("super mario bros 2", "gba famicom", 2001, "Super Mario Advance est un portage de Super Mario Bros. 2 dans sa version de Super Mario All-Stars sorti en 2001 sur Game Boy Advance");
+    let mario6 = new Mario("super mario bros 3", "gba", 2003, "Mario and Luigi: Superstar Saga est un jeu vidéo de rôle");
+    let mario7 = new Mario("kaettekita mario bros", "famicom", 1988, "est un jeux video");
+    let mario8 = new Mario("super mario bros and friends", "ms-dos", 1992, "est un autre jeux video");
+    let mario9 = new Mario("new super mario bros wii coin word", "arcade", 20110,"Jeu uniquement sorti au Japon. C'est une machine à sous mélangé à de l'arcade se jouant à 4 en incarnant Mario, Luigi et deux Toads." );
+    let mario10 = new Mario("new super mario bros2", "3ds", 2012, "New Super Mario Bros. 2 est un jeu vidéo de plates-formes de la série Super Mario, développé par Nintendo EAD, sorti le 28 juillet 2012 au Japon, et en août 2012 dans le reste du monde sur Nintendo 3DS. Le jeu fait suite à New Super Mario Bros sorti en 2006 sur Nintendo DS.");
 
-    let marioCollections = { ...{mario1}, ...{mario2}, ...{mario3}, ...{mario4}, ...{mario5}, ...{mario6}, ...{mario7}, ...{mario8}, ...{mario9}, ...{mario10}};
+    let marioCollections = { ...{mario1}, ...{mario2}, ...{mario3}, ...{mario4}, ...{mario5}, ...{mario6}, ...{mario7}, ...{mario8}, ...{mario9}, ...{mario10} };
 
-    console.log(marioCollections)
-
-//grace a la methode map , pour chaque objet de l'objet ma collections nous allons creer une div qui aura comme h2 le nom de la console
-//en h3 le nom du jeu et en h4 l'année , cette div doit etre afficher sur l'html
-
-
-    const marioDivs = Object.values(marioCollections).map((mario) => {
-    const div = document.createElement("div");
-    const marioCollectionDiv = document.getElementById("marioCollectionDiv");
-
-//la methode Object.values() sert a extraire les valeur de chaque proprieté d'objet de l'objet marioCollections
-//puis la methode map() pour boucler a travers chaque elements de ce tableau
     
-  
-    const h2 = document.createElement("h2");
+
+    let marioDivs = Object.values(marioCollections).map((mario) => {
+    let div = document.createElement("div");
+    let marioCollectionDiv = document.getElementById("marioCollectionDiv");
+
+    let h2 = document.createElement("h2");
     h2.textContent = mario.titre;
     div.appendChild(h2);
   
-    const h3 = document.createElement("h3");
+    let h3 = document.createElement("h3");
     h3.textContent = mario.console;
     div.appendChild(h3);
   
-    const h4 = document.createElement("h4");
+    let h4 = document.createElement("h4");
     h4.textContent = mario.sortie;
     div.appendChild(h4);
-  
-// la fonction map() va creer  un nouvel element <div> pour chaque element du tableau en utilisant la methodes  document.createElement()
-//et leur atribut le contenue des propriété console sortie titre de l'objet mario en utilisant la proprieté textContent
-
     return div;
   });
   
-  marioDivs.forEach((div) => {//la methode forEach() ajoute chaque nouvel element <div> crée a l'element <div> avec l'ID marioCollectionDiv dans l'html grace a la methode appenChild()
+  marioDivs.forEach((div, i) => {
+    let button = document.createElement("button");
+    button.textContent = "Voir la description";
+    button.addEventListener("click", () => {
+     openPopup(i);
+  });
+    div.appendChild(button);
     marioCollectionDiv.appendChild(div);
   });
-
-  marioDivs.forEach((div) => {
-    div.addEventListener("mouseover", () => {//au survol
-      div.style.transform = "scale(1.1)";//grossi la div
-      div.style.transition = "all 0.3s ease";// transition de 0.3 sec pour atteindre ca taille
-      div.style.color = "rgba(155, 155, 155)";//couleur
-    });
-  
-    div.addEventListener("mouseout", () => {// a la sorti de la souris
-      div.style.transform = "scale(1)";
-      div.style.transition = "all 0.3s ease";
-      div.style.color = "rgba(255, 255, 255)"
-    });
-  });
-  
-  // Ajout d'un effet de clic pour chaque jeu de la collection
-  marioDivs.forEach((div) => {
-    div.addEventListener("click", () => {
-      div.style.backgroundColor = "rgba(155, 0, 155, 0.5)";
-      div.style.borderRadius = "10px";
-      div.style.transition = "all 0.3s ease";
-  
-      setTimeout(() => {// le setTimeout est utilsé pour retarder l'alerte en l'occurence de 1000 millisecondes soit 1sec
-        alert(`Vous avez choisi ${div.querySelector("h2").textContent} sorti en ${div.querySelector("h4").textContent} sur ${div.querySelector("h3").textContent}`);//crée une alert et recupere tous les element div grace a la methode querySelector 
-      }, 1000);
-    });
-  });
-  
+ 
+  function openPopup(i) {
+   let marioCollections = { ...{mario1}, ...{mario2}, ...{mario3}, ...{mario4}, ...{mario5}, ...{mario6}, ...{mario7}, ...{mario8}, ...{mario9}, ...{mario10} };
+   let selectedMario = Object.values(marioCollections)[i];
+   let popup = document.createElement("div");
+    popup.classList.add("popup");
     
+   let title = document.createElement("h2");
+    title.textContent = selectedMario.titre;
+    popup.appendChild(title);
+  
+   let console = document.createElement("h3");
+    console.textContent = selectedMario.console;
+    popup.appendChild(console);
+  
+   let sortie = document.createElement("h4");
+    sortie.textContent = selectedMario.sortie;
+    popup.appendChild(sortie);
+  
+   let description = document.createElement("p");
+    description.textContent = selectedMario.description;
+    popup.appendChild(description);
+  
+   let closeBtn = document.createElement("button");
+    closeBtn.textContent = "Fermer";
+    closeBtn.addEventListener("click", () => {
+      popup.remove();
+    });
+    popup.appendChild(closeBtn);
+  
+    document.body.appendChild(popup);
+  }
+  
+// marioDivs.forEach((div) => {
+//   div.addEventListener("mouseover", () => {
+//     div.style.transform = "scale(1.1)";
+//     div.style.transition = "all 0.3s ease";
+//     div.style.color = "rgba(155, 155, 155)";
+//   });
+
+//   div.addEventListener("mouseout", () => {
+//     div.style.transform = "scale(1)";
+//     div.style.transition = "all 0.3s ease";
+//     div.style.color = "rgba(255, 255, 255)"
+//   });
+// });
+
+// marioDivs.forEach((div) => {
+//   div.addEventListener("click", () => {
+//     div.style.backgroundColor = "rgba(155, 0, 155, 0.5)";
+//     div.style.borderRadius = "10px";
+//     div.style.transition = "all 0.3s ease";
+//   });
+// });

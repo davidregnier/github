@@ -29,9 +29,24 @@ body{
     background: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);
     -webkit-background-clip: text;
     background-clip: text;
-    color: transparent;
+    color: transparent; 
 }
 
+.popup {
+    display: grid;
+    align-items: center;
+    position: fixed;
+    text-align: center;
+    padding: 1%;
+    background-color: rgb(169, 163, 163);
+    width: 500px;
+    height: 500px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius:2%;
+    box-shadow: 25px 25px 10px rgb(230, 229, 229);
+  }
 #carrousel{
     width: 800px;
     height: 400px;
