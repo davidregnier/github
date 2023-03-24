@@ -1,6 +1,7 @@
 // avec la méthode fetch et les promesse faire une page qui affiche la méteo de la ville 
 //que l'utilisateur a entrer dans l'input en utilisant l'api méteo de notre choix
 // api key = 0c7d25625a989d81292c12c9d08cee22
+// essayer avec api weatherstack
 
 let form = document.querySelector('form');
 let input = document.querySelector('input');
