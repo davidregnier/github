@@ -24,44 +24,13 @@
 //         container.style.transition="all 0.5s ease";
 //     }
 // }
-// function fibonacci(n) {
-//     if (n === 0) {
-//         return [0];
-//     } else if (n === 1) {
-//         return [0, 1];
-//     } else {
-//         let fib = fibonacci(n - 1);
-//         fib.push(fib[fib.length - 1] + fib[fib.length - 2]);
-//     return fib;
-//     }
-//   }
-  
-//   console.log(fibonacci(50));
-  
-//   function fibonacci(n) {
-//     let count = [];
-//     for(let i = 0; i <= n; i++) {
-//         if(i == 0) {
-//             count = [i];
-//         } else if (i == 1) {
-//             count.push(count[i-1] + i);
-//         } else {
-//             count.push(count[i-2] + count[i-1]);
-//         }
-//     }
-//     return count;
-//   }
 
-//   alert(fibonacci(10));
-
-// titre console anne de sortie
-
-function Mario (titre, console, sortie, description){
+  function Mario (titre, console, sortie, description){
     this.titre = titre;
     this.console = console;
     this.sortie = sortie;
     this.description = description;
-}
+  }
     let mario1 = new Mario("mario Bros", "game And Watch", 1983, "est un jeu d'arcade développé et édité par Nintendo en 1983. Il a été conçu par Shigeru Miyamoto comme la suite de Donkey Kong, avec lequel il constitue un des premiers jeux de plates-formes jamais créés." );
     let mario2 = new Mario("super mario bros", "Nes", 1985, "Super Mario Bros. est un jeu vidéo de plates-formes à défilement horizontal développé par Nintendo R&D4 et édité par Nintendo. Il est sorti sur Famicom au Japon en 1985 puis sur Nintendo Entertainment System en Amérique du Nord la même année et en 1987 en Europe. Il s'agit du premier jeu de la série Super Mario.");
     let mario3 = new Mario("super mario bros special", "pc-88", 1986, "est un jeu vidéo de plates-formes à défilement horizontal développé par Nintendo R&D4 et édité par Nintendo.");
@@ -75,16 +44,14 @@ function Mario (titre, console, sortie, description){
 
     let marioCollections = { ...{mario1}, ...{mario2}, ...{mario3}, ...{mario4}, ...{mario5}, ...{mario6}, ...{mario7}, ...{mario8}, ...{mario9}, ...{mario10} };
 
-    
-
-    let marioDivs = Object.values(marioCollections).map((mario) => {
+    let marioDivs = Object.values(marioCollections).map((mario,i) => {
     let div = document.createElement("div");
     let marioCollectionDiv = document.getElementById("marioCollectionDiv");
-
+    
     let h2 = document.createElement("h2");
     h2.textContent = mario.titre;
     div.appendChild(h2);
-  
+    
     let h3 = document.createElement("h3");
     h3.textContent = mario.console;
     div.appendChild(h3);
@@ -92,56 +59,119 @@ function Mario (titre, console, sortie, description){
     let h4 = document.createElement("h4");
     h4.textContent = mario.sortie;
     div.appendChild(h4);
-    return div;
-  });
-  
-  marioDivs.forEach((div, i) => {
+    
     let button = document.createElement("button");
     button.textContent = "Voir la description";
-    button.addEventListener("click", () => {
-     openPopup(i);
-  });
     div.appendChild(button);
+    button.classList.add("button")
     marioCollectionDiv.appendChild(div);
-  });
- 
-  function openPopup(i) {
-   let marioCollections = { ...{mario1}, ...{mario2}, ...{mario3}, ...{mario4}, ...{mario5}, ...{mario6}, ...{mario7}, ...{mario8}, ...{mario9}, ...{mario10} };
-   let selectedMario = Object.values(marioCollections)[i];
-   let popup = document.createElement("div");
-    popup.classList.add("popup");
+    marioCollectionDiv.appendChild(button);
     
-   let title = document.createElement("h2");
+    return div;
+  });
+  const btn = document.querySelectorAll(".button");
+
+  console.log(btn);
+  btn.forEach((el, i) => {
+      el.addEventListener("click", () => {
+      openPopup(i);
+      console.log("ok");
+    });
+  });
+  
+  function openPopup(i) {
+    let marioCollections = { ...{mario1}, ...{mario2}, ...{mario3}, ...{mario4}, ...{mario5}, ...{mario6}, ...{mario7}, ...{mario8}, ...{mario9}, ...{mario10} };
+    let selectedMario = Object.values(marioCollections)[i];
+    let popup = document.createElement("div");
+    popup.setAttribute("class", "popup");
+    
+    let title = document.createElement("h2");
     title.textContent = selectedMario.titre;
     popup.appendChild(title);
-  
-   let console = document.createElement("h3");
+    
+    let console = document.createElement("h3");
     console.textContent = selectedMario.console;
     popup.appendChild(console);
-  
-   let sortie = document.createElement("h4");
+    
+    let sortie = document.createElement("h4");
     sortie.textContent = selectedMario.sortie;
     popup.appendChild(sortie);
-  
-   let description = document.createElement("p");
+    
+    let description = document.createElement("p");
     description.textContent = selectedMario.description;
     popup.appendChild(description);
-  
-   let closeBtn = document.createElement("button");
+    
+    let closeBtn = document.createElement("button");
     closeBtn.textContent = "Fermer";
     closeBtn.addEventListener("click", () => {
       popup.remove();
     });
+
     popup.appendChild(closeBtn);
-  
     document.body.appendChild(popup);
+   
+  }
+  let marios = [mario1, mario2, mario3, mario4, mario5, mario6, mario7, mario8, mario9, mario10];
+  
+  let currentIndex = 0;
+  
+  function displayMario() {
+    marioCollectionDiv.innerHTML = 
+    `<h2>${marios[currentIndex].titre}</h2>
+    <p>${marios[currentIndex].console}</p>
+    <p>${marios[currentIndex].sortie}</p>`;
+    let button = document.createElement("button");
+    button.textContent = "Voir la description";
+    button.addEventListener("click", () => {
+    openPopup(currentIndex);
+    });
+    marioCollectionDiv.appendChild(button);
+
+    };
+  
+  function nextMario() {
+    currentIndex++;
+    if (currentIndex >= marios.length) {
+      currentIndex = 0;
+    }
+    displayMario();
   }
   
+  function previousMario() {
+    currentIndex--;
+    if (currentIndex < 0) {
+      currentIndex = marios.length - 1;
+    }
+    displayMario();
+  }
+
+displayMario();
+
+let nextBtn = document.createElement('button');
+nextBtn.innerHTML = '<i class="fas fa-chevron-right"></i>';
+nextBtn.classList.add('next-btn');
+nextBtn.addEventListener('click', nextMario);
+
+let previousBtn = document.createElement('button');
+previousBtn.innerHTML = '<i class="fas fa-chevron-left"></i>';
+previousBtn.classList.add('previous-btn');
+previousBtn.addEventListener('click', previousMario);
+
+let buttonsDiv = document.createElement('div');
+buttonsDiv.classList.add('buttons');
+buttonsDiv.appendChild(previousBtn);
+buttonsDiv.appendChild(nextBtn);
+
+let marioCollection = document.querySelector('#mario-collection');
+marioCollection.appendChild(buttonsDiv);
+
+
+
 // marioDivs.forEach((div) => {
-//   div.addEventListener("mouseover", () => {
-//     div.style.transform = "scale(1.1)";
-//     div.style.transition = "all 0.3s ease";
-//     div.style.color = "rgba(155, 155, 155)";
+//     div.addEventListener("mouseover", () => {
+//         div.style.transform = "scale(1.1)";
+//         div.style.transition = "all 0.3s ease";
+//         div.style.color = "rgba(155, 155, 155)";
 //   });
 
 //   div.addEventListener("mouseout", () => {

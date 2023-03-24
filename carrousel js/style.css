@@ -12,12 +12,32 @@ body{
     background-image: url(https://cdn.wallpapersafari.com/76/12/YSbp6J.jpg);
     background-size: cover;
 }
-#marioCollectionDiv{
+
+/* #marioCollectionDiv{
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 50px;
     justify-content: center;
     align-items: center;
+    width: 400px;
+    height: 400px;
+    background-size: cover;
+    box-shadow: 25px 25px 10px rgb(132, 132, 132);
+    text-decoration: underline;
+    text-shadow: 10px 5px 10px #696868;
+    border: 3px solid black;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 20px;
+    padding: 25px;
+    background: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent; 
+} */
+#marioCollectionDiv{
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    width: 400px;
+    height: 400px;
     background-size: cover;
     box-shadow: 25px 25px 10px rgb(132, 132, 132);
     text-decoration: underline;
@@ -31,6 +51,21 @@ body{
     background-clip: text;
     color: transparent; 
 }
+.next-btn{
+    position: absolute;
+    top: 48%;
+    right: 30%;
+    width: 50px;
+    height: 50px;
+}
+.previous-btn{
+    position: absolute;
+    top: 48%;
+    left: 30%;
+    width: 50px;
+    height: 50px;
+}
+
 
 .popup {
     display: grid;
@@ -47,6 +82,7 @@ body{
     border-radius:2%;
     box-shadow: 25px 25px 10px rgb(230, 229, 229);
   }
+
 #carrousel{
     width: 800px;
     height: 400px;
