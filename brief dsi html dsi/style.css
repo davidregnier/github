@@ -140,10 +140,9 @@ h1 span {
 .gris {
     background-color: #989999;
 }
-
-.diagrame div {
-    margin: 100px 0;
-    display: flex;
+/* .diagrame div {
+    margin: 50px 50px;
+    display: inline-block;
     align-items: center;
     justify-content: center;
 }
@@ -151,11 +150,71 @@ h1 span {
 .diagrame img {
     border-radius: 50px;
     box-shadow: 5px 5px 5px 0px #111010;
+    width: 300px;
+    height: 200px;
+}
+
+.diagrame2 img {
+    display: none;
+} */
+.diagrame {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.diagrame1 {
+    margin: 0 20px;
+    flex-shrink: 0;
+    width: 300px;
+    height: 200px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 50px;
+    box-shadow: 5px 5px 5px 0px #111010;
+}
+
+.diagrame1 img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: auto;
 }
 
 .diagrame2 img {
     display: none;
 }
+
+button1 {
+    position: absolute;
+    top: 50%;
+    left: 50px;
+    transform: translateY(-50%);
+    background-color: transparent;
+    border: none;
+    font-size: 24px;
+    color: white;
+    cursor: pointer;
+}
+button2 {
+    position: absolute;
+    top: 50%;
+    right: 50px;
+    transform: translateY(-50%);
+    background-color: transparent;
+    border: none;
+    font-size: 24px;
+    color: white;
+    cursor: pointer;
+}
+
+button:focus {
+    outline: none;
+}
+
 
 footer {
     width: 100%;
