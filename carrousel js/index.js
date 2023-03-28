@@ -71,13 +71,13 @@
   });
   const btn = document.querySelectorAll(".button");
 
-  console.log(btn);
-  btn.forEach((el, i) => {
-      el.addEventListener("click", () => {
-      openPopup(i);
-      console.log("ok");
-    });
-  });
+  // console.log(btn);
+  // btn.forEach((el, i) => {
+  //     el.addEventListener("click", () => {
+  //     openPopup(i);
+  //     console.log("ok");
+  //   });
+  // });
   
   function openPopup(i) {
     let marioCollections = { ...{mario1}, ...{mario2}, ...{mario3}, ...{mario4}, ...{mario5}, ...{mario6}, ...{mario7}, ...{mario8}, ...{mario9}, ...{mario10} };
