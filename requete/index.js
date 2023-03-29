@@ -91,16 +91,16 @@
 //         console.log('les donnees ont été envoyé avec succés', data);
 //     })
 //     .catch(error => {
-//         console.error('erreur dans l envoie des données :', error);
-//     });
-// }
-// const form = document.querySelector('form');
-// form.addEventListener('submit', (event) => {
-//     event.preventDefault();
-//     sendDataToServer();
-// });
-
-//Utilisez la méthode fetch pour récupérer des données JSON à partir de l’API themoviedb,puis utilisez ces données pour générer du contenu html en fonction de ce que l’utilisateur aura entré comme titre dans un input que vous aurez prévu à cet effet.
+    //         console.error('erreur dans l envoie des données :', error);
+    //     });
+    // }
+    // const form = document.querySelector('form');
+    // form.addEventListener('submit', (event) => {
+        //     event.preventDefault();
+        //     sendDataToServer();
+        // });
+        
+        //Utilisez la méthode fetch pour récupérer des données JSON à partir de l’API themoviedb,puis utilisez ces données pour générer du contenu html en fonction de ce que l’utilisateur aura entré comme titre dans un input que vous aurez prévu à cet effet.
 
 // keys b080d72a237d0bdc700275fb500dae98
 
@@ -109,6 +109,11 @@ const apiKey = 'b080d72a237d0bdc700275fb500dae98';
 const form = document.querySelector('form');
 const filmListe = document.getElementById('filmListe');
 let title = "";
+
+const date = new Date();
+const options = { day: 'numeric', month: 'long', year: 'numeric' };
+const formattedDate = date.toLocaleDateString('fr-FR', options);
+console.log(formattedDate); 
 
 form.addEventListener('submit', e => {
     e.preventDefault();
@@ -127,10 +132,6 @@ async function getMovies(title) {
     const data = await response.json();
     return data.results;
 }
-const date = new Date();
-const options = { day: 'numeric', month: 'long', year: 'numeric' };
-const formattedDate = date.toLocaleDateString('fr-FR', options);
-console.log(formattedDate); 
 
 function generateMoviesHtml(movies) {
     const moviesHtml = movies.map(movie => `
