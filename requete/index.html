@@ -1,15 +1,29 @@
 <!DOCTYPE html>
 <html lang="fr-FR">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script defer src="index.js"></script>
     <link rel="stylesheet" href="style.css">
     <title>Document</title>
 </head>
+
 <body>
+    <h1>film à la carte</h1>
     <form>
+        <label for="movie-title">Entrez un titre de film : </label>
+        <input type="text" id="movie-title" name="movie-title" required>
+        <button type="submit">Rechercher</button>
+    </form>
+
+    <div id="filmListe"></div>
+
+    <!-- <form>
         <label for="name-input">Nom:</label>
         <input type="text" id="name-input" name="name" required>
         
@@ -20,7 +34,8 @@
         <textarea id="message-input" name="message" required></textarea>
         
         <button type="submit">Envoyer</button>
-    </form>
-    <img alt="image recup by fetch" id="monImage">
+    </form> -->
+    <!-- <img alt="image recup by fetch" id="monImage"> -->
 </body>
+
 </html>
